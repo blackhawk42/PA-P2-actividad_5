@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <process.h>
+#include <unistd.h>
 
 void trim_newline(char *str) {
-    for(char *ptr = str; *ptr != '\0'; ptr++) {
+	char *ptr;
+    for(ptr = str; *ptr != '\0'; ptr++) {
         if (*ptr == '\n') {
             *ptr = '\0';
             break;
@@ -30,7 +31,7 @@ int main(int argc, char *argv[]) {
     trim_newline(arg2);
 
     
-    execvp(args[0], (const char * const*)args);
+    execvp(args[0], (char * const*)args);
 
     return 0;
 }
